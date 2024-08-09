@@ -12,6 +12,20 @@ class Main {
             println("Ou chamar o método: ${nome.lowercase()}");
 
 
+
+
+
+            /*#################################################
+            *                  Null Safety
+            * ################################################
+            */
+
+            // var nullString: String = null  -> retorna-rá erro. é necessário avisar
+            // o Kotlin que permitimos o valor null na variável
+
+            var nullString: String? = null;
+
+
         }
     }
 }
