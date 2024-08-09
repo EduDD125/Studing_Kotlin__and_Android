@@ -1,0 +1,17 @@
+# Excluir a pasta .idea/ do Android Studio/IntelliJ
+.idea/
+
+# Excluir pastas de build
+build/
+.gradle/
+
+# Excluir arquivos do Gradle
+.gradle/
+build/
+
+# Excluir arquivos locais
+local.properties
+
+# Excluir arquivos de sistema
+.DS_Store
+Thumbs.db
