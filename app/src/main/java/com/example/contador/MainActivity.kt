@@ -13,11 +13,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.contador.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var cliqueBt: Button
-    private lateinit var contadorTv: TextView
-    private lateinit var inicialEt: EditText
+    private lateinit var amb: ActivityMainBinding
     private var contador: Int = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main) // depois dessa função ocorre a criação dos objetos
                                                // que vamos querer referencias de dentro de resources
 
-        cliqueBt = findViewById(R.id.cliqueBt)
-        contadorTv = findViewById(R.id.contadorTv)
-        inicialEt = findViewById(R.id.inicialEt)
+        amb = ActivityMainBinding.inflate(layoutInflater) // primeira inflacao do xml
+        setContentView(amb.root)  // secunda inflacao do xml. Aqui setamos oq será exibido
 
-        inicialEt.addTextChangedListener(object: TextWatcher{
+
+        amb.inicialEt.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 // NSA
             }
@@ -43,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        cliqueBt.setOnClickListener {
-            contadorTv.text = ((++contador).toString());
+        amb.cliqueBt.setOnClickListener {
+            amb.contadorTv.text = ((++contador).toString());
         }
     }
 }
