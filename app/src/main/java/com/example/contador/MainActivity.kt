@@ -28,19 +28,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)  // secunda inflacao do xml. Aqui setamos oq será exibido
 
 
-        amb.inicialEt.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // NSA
-            }
-
-            override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                contador = s.toString().toInt()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // NSA
-            }
-        })
+       amb.inicialCB.setOnClickListener{
+           contador = if (amb.inicialCB.isChecked)
+               amb.inicialCB.text.toString().toInt()
+           else
+               0
+       }
 
         amb.cliqueBt.setOnClickListener {
             amb.contadorTv.text = ((++contador).toString());
