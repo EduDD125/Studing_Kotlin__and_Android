@@ -12,10 +12,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_zero"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@id/cliqueBt"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/cliqueBt"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:text="Clique"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="4dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
