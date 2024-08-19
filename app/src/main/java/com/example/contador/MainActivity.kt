@@ -3,8 +3,11 @@ package com.example.contador
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -29,17 +32,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)  // secunda inflacao do xml. Aqui setamos oq será exibido
 
 
-       amb.zeroRb.setOnClickListener{
-           constante = amb.zeroRb.text.toString().toInt();
+       amb.inicialSp.onItemSelectedListener = object: OnItemSelectedListener {
+           override fun onItemSelected(
+               parent: AdapterView<*>?,
+               view: View?,
+               position: Int,
+               id: Long) {
+
+               // vamos usar o metodo  "toString" ou "to<SomeType>" pq o conversor "as" é genÊrico
+               // e não realiza as verificações que um método "to<SomeType>" realiza. Só usamos o
+               // método conversor "as" quando não houver um "to<SomeType>" para a situação
+
+               constante = when(position) {
+                   0 -> 0
+                   1 -> 1
+                   2 -> 5
+                   3 -> 10
+                   else -> 0 // é necessário setar um default para esgotar as possibilidades
+                             // isso é usado quando 'when' é usado como expressão
+               }
+           }
+
+           override fun onNothingSelected(p0: AdapterView<*>?) {
+               //NSA
+           }
        }
-
-        amb.dexRb.setOnClickListener({
-            constante = amb.dexRb.text.toString().toInt()
-        })
-
         amb.cliqueBt.setOnClickListener {
-            if (constante == 10) contador = contador + constante;
-            else contador = ++contador
+            println(constante)
+            contador = contador + constante;
             amb.contadorTv.text = ((contador).toString());
         }
     }
