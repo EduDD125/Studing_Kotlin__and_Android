@@ -18,6 +18,7 @@ import com.example.contador.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var amb: ActivityMainBinding
     private var contador: Int = 0;
+    private var constante: Int = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +29,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)  // secunda inflacao do xml. Aqui setamos oq será exibido
 
 
-       amb.inicialCB.setOnClickListener{
-           contador = if (amb.inicialCB.isChecked)
-               amb.inicialCB.text.toString().toInt()
-           else
-               0
+       amb.zeroRb.setOnClickListener{
+           constante = amb.zeroRb.text.toString().toInt();
        }
 
+        amb.dexRb.setOnClickListener({
+            constante = amb.dexRb.text.toString().toInt()
+        })
+
         amb.cliqueBt.setOnClickListener {
-            amb.contadorTv.text = ((++contador).toString());
+            if (constante == 10) contador = contador + constante;
+            else contador = ++contador
+            amb.contadorTv.text = ((contador).toString());
         }
     }
 }
